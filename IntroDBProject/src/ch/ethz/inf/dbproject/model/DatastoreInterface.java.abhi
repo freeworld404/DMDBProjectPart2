@@ -1,0 +1,201 @@
+package ch.ethz.inf.dbproject.model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import ch.ethz.inf.dbproject.database.MySQLConnection;
+
+/**
+ * This class should be the interface between the web application
+ * and the database. Keeping all the data-access methods here
+ * will be very helpful for part 2 of the project.
+ */
+public final class DatastoreInterface {
+
+	//FIXME This is a temporary list of projects that will be displayed until all the methods have been properly implemented
+	//private final static Project[] staticProjects = new Project[] { 
+	//		new Project(0, "High-End Server", "1287.9%", 10000), 
+	//		new Project(1, "The Next MacBook Air", "54.7%", 250000),
+	//		new Project(2, "New Research Lab", "1.2%", 1000000),
+	//		new Project(3, "Death Star", "0.0%", 1000000000),
+	//	};
+	private final static List<Project> staticProjectList = new ArrayList<Project>();
+	static {
+		//	for (int i = 0; i < staticProjects.length; i++) {
+		//	staticProjectList.add(staticProjects[i]);
+		//}
+	}
+	
+	private PreparedStatement selectProjectById = null;
+	
+	@SuppressWarnings("unused")
+	private Connection sqlConnection;
+
+	public DatastoreInterface() {
+		//TODO Uncomment the following line once MySQL is running
+		this.sqlConnection = MySQLConnection.getInstance().getConnection();
+	}
+	
+	public final Project getProjectById(final int id) {
+	
+		/**
+		 * TODO this method should return the project with the given id
+		 */
+		
+		//ResultSet rs = null;
+		Project result = null;
+		
+		try {
+			final Statement stmt = this.sqlConnection.createStatement();
+			final ResultSet rs = stmt.executeQuery("SELECT p.id,title,description,baseGoal,username,startDate,endDate,catName,cityName FROM project p,user u,category cat,city c where p.uid=u.id and p.catId=cat.id and p.cityId=c.id and p.id="+id);
+			rs.first();
+			result = new Project(rs);
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+			e.printStackTrace();
+		}
+		return result;
+		
+	}
+	
+	public final List<Project> getAllProjects() {
+
+		/**
+		 * TODO this method should return all the projects in the database
+		 */
+			
+		final List<Project> projects = new ArrayList<Project>();		
+		//Code example for DB access
+		try {
+			
+			final Statement stmt = this.sqlConnection.createStatement();
+			final ResultSet rs = stmt.executeQuery("SELECT p.id,title,description,baseGoal,username,startDate,endDate,catName,cityName FROM project p,user u,category cat,city c where p.uid=u.id and p.catId=cat.id and p.cityId=c.id");
+
+			while (rs.next()) {
+				projects.add(new Project(rs));
+			}
+			rs.close();
+			stmt.close();
+			
+		} catch (final SQLException ex) {			
+			ex.printStackTrace();
+			return null;			
+		}
+		return projects;
+	}
+	
+	
+	public User getUserById(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Category getCategoryById(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public City getCityById(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void addCommentForProject(Integer id, Comment commentObj) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public User getUserByUsername(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Project> getProjectsByCategory(String category) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Project> getMostPopularProjects() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Project> getMostFundedProjects() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Project> getSoonEndingProjects() {
+		// TODO Auto-generated method stub
+
+		final List<Project> projects = new ArrayList<Project>();		
+		//Code example for DB access
+		try {
+			
+			final Statement stmt = this.sqlConnection.createStatement();
+			final ResultSet rs = stmt.executeQuery("SELECT p.id,title,description,baseGoal,username,startDate,endDate,catName,cityName FROM project p,user u,category cat,city c where p.uid=u.id and p.catId=cat.id and p.cityId=c.id and DATEDIFF(p.endDate, CURDATE()) < 5000");
+			while (rs.next()) {
+				projects.add(new Project(rs));
+			}
+			rs.close();
+			stmt.close();
+			
+		} catch (final SQLException ex) {			
+			ex.printStackTrace();
+			return null;			
+		}
+		return projects;
+	}
+
+	public List<Amount> getAmountsOfProject(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Comment> getCommentsOfProject(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Project> searchByName(String name) {
+		// TODO Auto-generated method stub
+		final List<Project> projects = new ArrayList<Project>();		
+		//Code example for DB access
+		try {
+			
+			final Statement stmt = this.sqlConnection.createStatement();
+			final ResultSet rs = stmt.executeQuery("SELECT p.id,title,description,baseGoal,username,startDate,endDate,catName,cityName FROM project p,user u,category cat,city c where p.uid=u.id and p.catId=cat.id and p.cityId=c.id and DATEDIFF(p.endDate, CURDATE()) < 5000");
+			
+			while (rs.next()) {
+				projects.add(new Project(rs));
+			}
+			rs.close();
+			stmt.close();
+			
+		} catch (final SQLException ex) {			
+			ex.printStackTrace();
+			return null;			
+		}
+		return projects;
+	}
+
+	public List<Project> searchByCategory(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Project> searchByCity(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

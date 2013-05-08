@@ -1,0 +1,210 @@
+@CHARSET "UTF-8";
+
+html, body { 
+	height: 100%;
+	font-family: sans-serif;
+	font-size: 90%;
+}
+
+body {
+	margin: 0px;
+	background: red;
+}
+table#masterTable {
+	background: white;
+	width: 100%;
+	height: 100%;
+}
+
+table#masterTable > tbody > tr > th#masterHeader {
+	background: #66CCFF;
+	height: 100px;
+	vertical-align: middle;
+	border-bottom: 1px solid #100f35;
+}
+
+table#masterTable > tbody > tr > td#masterFooter {
+	border-top: 1px solid #100f35;
+	background: #66CCFF;
+	text-align: right;
+}
+
+td#masterContentMenu {
+	background: #66CCFF;
+	border-right: 1px solid #100f35;	
+	width: 200px; 
+	vertical-align: top;
+	padding: 10px;
+}
+
+div.menuDiv2 {
+	padding-left: 25px;
+}
+
+div.menuDiv1, div.menuDiv2 {
+	border-bottom: 1px dotted #fafafa;
+}
+
+div.menuDiv1:HOVER, div.menuDiv2:HOVER {
+	background: #585874;	
+}
+
+div.menuDiv1 a, div.menuDiv2 a {
+	width: 100%;
+	color: black;
+	font-style: normal;
+	text-decoration: none;
+	display: block;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+table#masterTable > tbody > tr#masterContent {
+	height: 100%;
+}
+
+td#masterContentPlaceholder {
+	vertical-align: top;
+	padding: 10px;
+}
+
+table.projectsTable {
+	width: 100%;	
+	border-bottom: 2px solid black;
+	border-right: 2px solid black;
+	border-left: 1px solid black;
+}
+
+table.projectsTable td, table.projectsTable th {
+	border-left: 1px solid black;
+	border-top: 1px solid black;
+	text-align: center;
+}
+
+table.projectsTable th {
+	border-top: 2px solid black;
+	border-bottom: 1px solid black;
+	background: #66CCFF;	
+}
+
+table.projectTable {
+	width: 300px;	
+	border-bottom: 2px solid black;
+	border-right: 1px solid black;
+	border-top: 1px solid black;
+}
+
+table.projectTable td, table.projectTable th {
+	width:150px;
+	padding: 5px 5px 5px 5px;
+	border-right: 1px solid black;
+	border-top: 1px solid black;
+	text-align: center;
+}
+
+table.projectTable th {
+	width:150px;
+	border-top: 1px solid black;
+	border-left: 2px solid black;
+	border-right: 1px solid black;
+	background: #66CCFF;
+	text-align: right;	
+}
+
+
+table.fundsTable {
+	width: 100%;	
+	border-bottom: 2px solid black;
+	border-right: 2px solid black;
+	border-left: 1px solid black;
+}
+
+table.fundsTable td, table.fundsTable th {
+	border-left: 1px solid black;
+	border-top: 1px solid black;
+	text-align: center;
+}
+
+table.fundsTable th {
+	border-top: 2px solid black;
+	border-bottom: 1px solid black;
+	background: #66CCFF;	
+}
+
+
+table.commentTable {
+	width: 100%;	
+	border-bottom: 2px solid black;
+	border-right: 2px solid black;
+	border-left: 1px solid black;
+}
+
+table.commentTable td, table.commentTable th {
+	border-left: 1px solid black;
+	border-top: 1px solid black;
+	text-align: center;
+}
+
+table.commentTable th {
+	border-top: 2px solid black;
+	border-bottom: 1px solid black;
+	background: #66CCFF;	
+}
+
+table.fundingLevelTable {
+	width: 100%;	
+	border-bottom: 2px solid black;
+	border-right: 2px solid black;
+	border-left: 1px solid black;
+}
+
+table.fundingLevelTable td, table.fundingLevelTable th {
+	border-left: 1px solid black;
+	border-top: 1px solid black;
+	text-align: center;
+}
+
+table.fundingLevelTable th {
+	border-top: 2px solid black;
+	border-bottom: 1px solid black;
+	background: #66CCFF;	
+}
+
+table.stretchGoalTable {	
+	width: 100%;	
+	border-bottom: 2px solid black;
+	border-right: 2px solid black;
+	border-left: 1px solid black;
+}
+
+table.stretchGoalTable td, table.stretchGoalTable th {
+	border-left: 1px solid black;
+	border-top: 1px solid black;
+	text-align: center;
+}
+
+table.stretchGoalTable th {
+	border-top: 2px solid black;
+	border-bottom: 1px solid black;
+	background: #66CCFF;
+}
+
+
+table.supportedProjectsTable {
+	width: 100%;	
+	border-bottom: 2px solid black;
+	border-right: 2px solid black;
+	border-left: 1px solid black;
+}
+
+table.supportedProjectsTable td, table.supportedProjectsTable th {
+	border-left: 1px solid black;
+	border-top: 1px solid black;
+	text-align: center;
+}
+
+table.supportedProjectsTable th {
+	border-top: 2px solid black;
+	border-bottom: 1px solid black;
+	background: #66CCFF;	
+}
